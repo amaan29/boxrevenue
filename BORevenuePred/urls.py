@@ -19,5 +19,6 @@ from interface import views as interfaceViews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',interfaceViews.base)
+    path('', interfaceViews.base),
+    path('response/', interfaceViews.response, name='response')
 ]
