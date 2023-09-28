@@ -36,11 +36,16 @@ def response(request):
     theatres = np.log10(int(theatres))
     rel = np.log10(int(rel))
 
+    flag = 0
     for i in range(18):
         if gens[i] == None:
             gens[i] = 0
         else:
             gens[i] = 1
+            flag = 1
+
+    if flag == 0:
+        return render(request, 'base.html', {'genre' : 0})
 
     distTr = le1.inverse_transform(df['distributor'])
     np.append(distTr, dist)
@@ -58,4 +63,4 @@ def response(request):
     revenue = int(model.predict(predVals)[0] * (10**8))
 
 
-    return render(request,'response.html', {'revenue' : revenue, 'mname' : mname})
+    return render(request,'response.html', {'revenue' : revenue, 'mname' : mname.capitalize})

@@ -1,82 +1,244 @@
 <html>
-    <head>
-        <title>Box Office Revenue Prediction</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
-    </head>
-    <body style="background-color: bisque;">
-        <h2 align="center" style="font-family: Impact;">Predict your Box Office Revenue!</h1><br/>
+  <head>
+    <title>Box Office Revenue Prediction</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body style="background-color: bisque">
+    <h1 align="center" style="font-family: Impact">
+      Predict your Box Office Revenue!
+    </h1>
+    <br />
 
-        <div class="container">
-          <form action="{% url 'response' %}">
-            <div class="mb-3">
-              <label class="form-label" style="font-family: Georgia;">Movie Name: </label>
-              <input type="text" class="form-control" name="mname" required>
-            </div><br/>
-              <div class="mb-3">
-                <label class="form-label" style="font-family: Georgia;">Distributor: </label>
-                <input type="text" class="form-control" name="dist" required>
-              </div><br/>
-              <div class="mb-3">
-                <label class="form-label" style="font-family: Georgia;">Number Of Opening Theatres: </label>
-                <input type="number" class="form-control" name="theatres" required min="0">
-              </div><br/>
-              <div class="mb-3">
-                <label class="form-label" style="font-family: Georgia;">MPAA Rating: </label><br/>
-                <input type="radio" class="form-check-input" name="MPAA" value="PG-13">
-                <label class="form-check-label">PG-13</label><br/>
-                <input type="radio" class="form-check-input" name="MPAA" value="PG">
-                <label class="form-check-label">PG</label><br/>
-              <input type="radio" class="form-check-input" name="MPAA" value="R">
-                <label class="form-check-label">R</label><br/>
-                <input type="radio" class="form-check-input" name="MPAA" value="NR">
-                <label class="form-check-label">Not Rated</label>
-              </div><br/>
-              <div class="mb-3">
-                <label class="form-label" style="font-family: Georgia;">Release Days: </label>
-                <input type="number" class="form-control" name="rel" required min="0">
-              </div>
-              <div class="mb-3">
-                <label class="form-label" style="font-family: Georgia;">Genres: </label><br/>
-                <input type="checkbox" class="form-check-input" name="Action"/>
+    <div class="container">
+      <form action="{% url 'response' %}">
+        <div class="mb-3">
+          <label class="form-label" style="font-family: Georgia">
+            <h4>Movie Name:</h4>
+          </label>
+          <input type="text" class="form-control" name="mname" required />
+        </div>
+        <br />
+        <div class="mb-3">
+          <label class="form-label" style="font-family: Georgia">
+            <h4>Distributor:</h4>
+          </label>
+          <input type="text" class="form-control" name="dist" required />
+        </div>
+        <br />
+        <div class="mb-3">
+          <label class="form-label" style="font-family: Georgia">
+            <h4>Number Of Opening Theatres:</h4>
+          </label>
+          <input
+            type="number"
+            class="form-control"
+            name="theatres"
+            required
+            min="0"
+          />
+        </div>
+        <br />
+        <div class="mb-3">
+          <label class="form-label" style="font-family: Georgia"
+            ><h4>MPAA Rating:</h4> </label
+          ><br />
+          <label class="form-check-label">
+            <input
+              type="radio"
+              class="form-check-input"
+              name="MPAA"
+              value="PG-13"
+              required
+            />
+            PG-13</label
+          ><br />
+          <label class="form-check-label">
+            <input
+              type="radio"
+              class="form-check-input"
+              name="MPAA"
+              value="PG"
+              required
+            />
+            PG</label
+          ><br />
+          <label class="form-check-label">
+            <input
+              type="radio"
+              class="form-check-input"
+              name="MPAA"
+              value="R"
+              required
+            />
+            R</label
+          ><br />
+          <label class="form-check-label">
+            <input
+              type="radio"
+              class="form-check-input"
+              name="MPAA"
+              value="NR"
+              required
+            />
+            Not Rated</label
+          >
+        </div>
+        <br />
+        <div class="mb-3">
+          <label class="form-label" style="font-family: Georgia"
+            ><h4>Release Days:</h4>
+          </label>
+          <input
+            type="number"
+            class="form-control"
+            name="rel"
+            required
+            min="0"
+          /><br />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" style="font-family: Georgia"
+            ><h4>Genres:</h4>
+            {% if genre == 0 %}
+            <p style="color: red">Please select at least one genre</p>
+            {% endif %}</label
+          ><br />
+          <table>
+            <tr>
+              <td>
+                <input type="checkbox" class="form-check-input" name="Action" />
                 <label class="form-check-label">Action</label>
-                <input type="checkbox" class="form-check-input" name="Adventure"/>
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  name="Adventure"
+                />
                 <label class="form-check-label">Adventure</label>
-                <input type="checkbox" class="form-check-input" name="Animation"/>
-                <label class="form-check-label">Animation</label><br/>
-                <input type="checkbox" class="form-check-input" name="Biography"/>
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  name="Animation"
+                />
+                <label class="form-check-label">Animation</label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  name="Biography"
+                />
                 <label class="form-check-label">Biography</label>
-                <input type="checkbox" class="form-check-input" name="Comedy"/>
+              </td>
+              <td>
+                <input type="checkbox" class="form-check-input" name="Comedy" />
                 <label class="form-check-label">Comedy</label>
-                <input type="checkbox" class="form-check-input" name="Crime"/>
-                <label class="form-check-label">Crime</label><br/>
-                <input type="checkbox" class="form-check-input" name="Documentary"/>
+              </td>
+              <td>
+                <input type="checkbox" class="form-check-input" name="Crime" />
+                <label class="form-check-label">Crime</label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  name="Documentary"
+                />
                 <label class="form-check-label">Documentary</label>
-                <input type="checkbox" class="form-check-input" name="Drama"/>
+              </td>
+              <td>
+                <input type="checkbox" class="form-check-input" name="Drama" />
                 <label class="form-check-label">Drama</label>
-                <input type="checkbox" class="form-check-input" name="Family"/>
-                <label class="form-check-label">Family</label><br/>
-                <input type="checkbox" class="form-check-input" name="Fantasy"/>
+              </td>
+              <td>
+                <input type="checkbox" class="form-check-input" name="Family" />
+                <label class="form-check-label">Family</label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  name="Fantasy"
+                />
                 <label class="form-check-label">Fantasy</label>
-                <input type="checkbox" class="form-check-input" name="Fiction"/>
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  name="Fiction"
+                />
                 <label class="form-check-label">Fiction</label>
-                <input type="checkbox" class="form-check-input" name="History"/>
-                <label class="form-check-label">History</label><br/>
-                <input type="checkbox" class="form-check-input" name="Horror"/>
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  name="History"
+                />
+                <label class="form-check-label">History</label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="checkbox" class="form-check-input" name="Horror" />
                 <label class="form-check-label">Horror</label>
-                <input type="checkbox" class="form-check-input" name="Music"/>
+              </td>
+              <td>
+                <input type="checkbox" class="form-check-input" name="Music" />
                 <label class="form-check-label">Music</label>
-                <input type="checkbox" class="form-check-input" name="Mystery"/>
-                <label class="form-check-label">Mystery</label><br/>
-                <input type="checkbox" class="form-check-input" name="Romance"/>
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  name="Mystery"
+                />
+                <label class="form-check-label">Mystery</label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  name="Romance"
+                />
                 <label class="form-check-label">Romance</label>
-                <input type="checkbox" class="form-check-input" name="Sci-Fi"/>
+              </td>
+              <td>
+                <input type="checkbox" class="form-check-input" name="Sci-Fi" />
                 <label class="form-check-label">Sci-Fi</label>
-                <input type="checkbox" class="form-check-input" name="Thriller"/>
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  name="Thriller"
+                />
                 <label class="form-check-label">Thriller</label>
-              </div><br/>
-              <button type="submit" class="btn btn-primary">Submit</button>
-              <button type="reset" class="btn btn-secondary">Reset</button>
-            </form>
-          </div>
-    </body>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-secondary">Reset</button>
+      </form>
+    </div>
+  </body>
 </html>
