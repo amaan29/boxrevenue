@@ -3,7 +3,7 @@ from BORevenuePred import *
 # Create your views here.
 
 def base(request):
-    return render(request, 'base.html')
+    return render(request, 'index.html')
 
 def response(request):
     mname = request.GET.get('mname')
@@ -45,7 +45,7 @@ def response(request):
             flag = 1
 
     if flag == 0:
-        return render(request, 'base.html', {'genre' : 0})
+        return render(request, 'index.html', {'genre' : 0})
 
     distTr = le1.inverse_transform(df['distributor'])
     np.append(distTr, dist)
@@ -63,4 +63,5 @@ def response(request):
     revenue = int(model.predict(predVals)[0] * (10**8))
 
 
-    return render(request,'response.html', {'revenue' : revenue, 'mname' : mname.capitalize})
+    return render(request,'response.html', 
+                  {'revenue' : revenue, 'mname' : mname.capitalize, 'mse' : mse, 'r2' : r2})

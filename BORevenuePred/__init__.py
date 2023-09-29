@@ -1,12 +1,10 @@
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sb
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.feature_extraction.text import CountVectorizer
-from sklearn import metrics
 from sklearn import linear_model
+from sklearn import metrics
 
 df = pd.read_csv('../boxoffice.csv', encoding='latin-1')
 df.drop(['world_revenue', 'opening_revenue'], axis=1, inplace=True)
@@ -52,8 +50,13 @@ df['MPAA'] = le2.fit_transform(df['MPAA'])
 
 y = df['domestic_revenue']
 x = df.drop(['domestic_revenue', 'title'], axis=1)
-x_train, x_test, y_train, y_test = train_test_split(
-    x, y, test_size=0.2, random_state=1)
+
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=1)
+
 lm = linear_model.LinearRegression()
 model = lm.fit(x_train, y_train)
+
 y_pred = model.predict(x_test)
+
+mse = round(metrics.mean_squared_error(y_test, y_pred), 2)
+r2 = round(metrics.r2_score(y_test, y_pred), 2)
