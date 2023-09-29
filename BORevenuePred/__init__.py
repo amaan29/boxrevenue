@@ -6,7 +6,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn import linear_model
 from sklearn import metrics
 
-df = pd.read_csv('../boxoffice.csv', encoding='latin-1')
+df = pd.read_csv('./boxoffice.csv', encoding='latin-1')
 df.drop(['world_revenue', 'opening_revenue'], axis=1, inplace=True)
 df.drop('budget', axis=1, inplace=True)
 
