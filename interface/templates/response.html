@@ -5,16 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Box Office - Revenue</title>
   </head>
-  <body style="background-color: burlywood">
+  <body
+    style="
+      background: linear-gradient(white, transparent),
+        url(https://civichallstanley.co.uk/wp-content/uploads/2019/12/box-office-1920.jpg);
+      background-size: cover;
+      position: absolute;
+      top: 3%;
+      left: 10%;
+      color: white;
+    "
+  >
     <div class="container">
-      <h1 align="center" style="font-family: Lucida Handwriting">
-        {{mname}} will collect approximately <br />
-        ${{revenue}} <br />
-        as predicted by Linear Regression ML Model
+      <h1 align="justify" style="font-family: Lucida Handwriting">
+        {{mname}} will collect approximately
       </h1>
+      <h1 style="color: rgb(246, 223, 128)">&emsp;&emsp;${{revenue}} Mn</h1>
+      <h1>as predicted by Linear Regression ML Model</h1>
+
       <br /><br />
-      <h3 align="center">Mean Squared Error: {{mse}}</h3>
-      <h3 align="center">R2 Score: {{r2}}</h3>
+      <h3 align="justify">Mean Squared Error : {{mse}}</h3>
+      <h3 align="justify">R2 Score : {{r2}}</h3>
     </div>
   </body>
 </html>

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from BORevenuePred import *
+
 # Create your views here.
 
 def base(request):
@@ -60,7 +61,7 @@ def response(request):
     predVals = [[dist, theatres, rating, rel, gens[0], gens[1], gens[2], gens[3], gens[4], gens[5], gens[6], gens[7], gens[8],
                  gens[9], gens[10], gens[11], gens[12], gens[13], gens[14], gens[15], gens[16], gens[17]]]
 
-    revenue = int(model.predict(predVals)[0] * (10**8))
+    revenue = (model.predict(predVals)[0]*(10**2)).round(3)
 
 
     return render(request,'response.html', 

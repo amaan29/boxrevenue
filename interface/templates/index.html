@@ -7,16 +7,52 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+    <style>
+      * {
+        color: rgb(255, 255, 255);
+      }
+
+      body {
+        background: linear-gradient(transparent, black),
+          url(https://goingbionic.com/wp-content/uploads/2017/03/film-production-on-set.jpg);
+        background-size: cover;
+        background-position: center;
+      }
+
+      h1 {
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+        font-weight: bold;
+        color: white;
+      }
+
+      input[type="text"] {
+        background-color: black;
+        color: white;
+        width: 40%;
+      }
+
+      input[type="number"] {
+        background-color: black;
+        color: white;
+        width: 40%;
+      }
+
+      input[type="text"]:focus {
+        background-color: black;
+        color: white;
+        outline: crimson;
+      }
+
+      input[type="number"]:focus {
+        background-color: black;
+        color: white;
+        outline: crimson;
+      }
+    </style>
   </head>
-  <body
-    style="
-      background: linear-gradient(rgba(0, 0, 0, 0.5), white),
-        url(box-office-1920.jpg);
-    "
-  >
-    <h1 align="center" style="font-family: Impact">
-      Predict your Box Office Revenue!
-    </h1>
+
+  <body>
+    <h1 align="center">Predict your Box Office Revenue!</h1>
     <br />
 
     <div class="container">
@@ -28,6 +64,7 @@
           <input type="text" class="form-control" name="mname" required />
         </div>
         <br />
+
         <div class="mb-3">
           <label class="form-label" style="font-family: Georgia">
             <h4>Distributor:</h4>
@@ -35,6 +72,7 @@
           <input type="text" class="form-control" name="dist" required />
         </div>
         <br />
+
         <div class="mb-3">
           <label class="form-label" style="font-family: Georgia">
             <h4>Number Of Opening Theatres:</h4>
@@ -48,6 +86,7 @@
           />
         </div>
         <br />
+
         <div class="mb-3">
           <label class="form-label" style="font-family: Georgia"
             ><h4>MPAA Rating:</h4> </label
@@ -94,6 +133,7 @@
           >
         </div>
         <br />
+
         <div class="mb-3">
           <label class="form-label" style="font-family: Georgia"
             ><h4>Release Days:</h4>
@@ -104,8 +144,10 @@
             name="rel"
             required
             min="0"
-          /><br />
+          />
         </div>
+        <br />
+
         <div class="mb-3">
           <label class="form-label" style="font-family: Georgia"
             ><h4>Genres:</h4>
@@ -116,132 +158,201 @@
           <table>
             <tr>
               <td>
-                <input type="checkbox" class="form-check-input" name="Action" />
-                <label class="form-check-label">Action</label>
+                <label class="form-check-label">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    name="Action"
+                  />
+                  Action</label
+                >
               </td>
               <td>
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  name="Adventure"
-                />
-                <label class="form-check-label">Adventure</label>
+                <label class="form-check-label">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    name="Adventure"
+                  />
+                  Adventure</label
+                >
               </td>
               <td>
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  name="Animation"
-                />
-                <label class="form-check-label">Animation</label>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  name="Biography"
-                />
-                <label class="form-check-label">Biography</label>
-              </td>
-              <td>
-                <input type="checkbox" class="form-check-input" name="Comedy" />
-                <label class="form-check-label">Comedy</label>
-              </td>
-              <td>
-                <input type="checkbox" class="form-check-input" name="Crime" />
-                <label class="form-check-label">Crime</label>
+                <label class="form-check-label">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    name="Animation"
+                  />
+                  Animation</label
+                >
               </td>
             </tr>
             <tr>
               <td>
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  name="Documentary"
-                />
-                <label class="form-check-label">Documentary</label>
+                <label class="form-check-label">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    name="Biography"
+                  />
+                  Biography</label
+                >
               </td>
               <td>
-                <input type="checkbox" class="form-check-input" name="Drama" />
-                <label class="form-check-label">Drama</label>
+                <label class="form-check-label">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    name="Comedy"
+                  />
+                  Comedy</label
+                >
               </td>
               <td>
-                <input type="checkbox" class="form-check-input" name="Family" />
-                <label class="form-check-label">Family</label>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  name="Fantasy"
-                />
-                <label class="form-check-label">Fantasy</label>
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  name="Fiction"
-                />
-                <label class="form-check-label">Fiction</label>
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  name="History"
-                />
-                <label class="form-check-label">History</label>
+                <label class="form-check-label">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    name="Crime"
+                  />
+                  Crime</label
+                >
               </td>
             </tr>
             <tr>
               <td>
-                <input type="checkbox" class="form-check-input" name="Horror" />
-                <label class="form-check-label">Horror</label>
+                <label class="form-check-label">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    name="Documentary"
+                  />
+                  Documentary</label
+                >
               </td>
               <td>
-                <input type="checkbox" class="form-check-input" name="Music" />
-                <label class="form-check-label">Music</label>
+                <label class="form-check-label">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    name="Drama"
+                  />
+                  Drama</label
+                >
               </td>
               <td>
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  name="Mystery"
-                />
-                <label class="form-check-label">Mystery</label>
+                <label class="form-check-label">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    name="Family"
+                  />
+                  Family</label
+                >
               </td>
             </tr>
             <tr>
               <td>
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  name="Romance"
-                />
-                <label class="form-check-label">Romance</label>
+                <label class="form-check-label">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    name="Fantasy"
+                  />
+                  Fantasy</label
+                >
               </td>
               <td>
-                <input type="checkbox" class="form-check-input" name="Sci-Fi" />
-                <label class="form-check-label">Sci-Fi</label>
+                <label class="form-check-label">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    name="Fiction"
+                  />
+                  Fiction</label
+                >
               </td>
               <td>
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  name="Thriller"
-                />
-                <label class="form-check-label">Thriller</label>
+                <label class="form-check-label">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    name="History"
+                  />
+                  History</label
+                >
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="form-check-label">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    name="Horror"
+                  />
+                  Horror</label
+                >
+              </td>
+              <td>
+                <label class="form-check-label">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    name="Music"
+                  />
+                  Music</label
+                >
+              </td>
+              <td>
+                <label class="form-check-label">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    name="Mystery"
+                  />
+                  Mystery</label
+                >
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="form-check-label">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    name="Romance"
+                  />
+                  Romance</label
+                >
+              </td>
+              <td>
+                <label class="form-check-label">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    name="Sci-Fi"
+                  />
+                  Sci-Fi</label
+                >
+              </td>
+              <td>
+                <label class="form-check-label">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    name="Thriller"
+                  />
+                  Thriller</label
+                >
               </td>
             </tr>
           </table>
         </div>
         <br />
-        <button type="submit" class="btn btn-primary">Submit</button>
+
+        <button type="submit" class="btn btn-primary">Predict</button>
         <button type="reset" class="btn btn-secondary">Reset</button>
       </form>
     </div>
